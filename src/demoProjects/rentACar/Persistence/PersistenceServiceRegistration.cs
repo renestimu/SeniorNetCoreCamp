@@ -18,9 +18,10 @@ namespace Persistence
                                                             IConfiguration configuration)
         {
             services.AddDbContext<BaseDbContext>(options =>
-                                                     options.UseNpgsql(
+                                                     options.UseSqlServer(
                                                          configuration.GetConnectionString("RentACarCampConnectionString")));
             services.AddScoped<IBrandRepository, BrandRepository>();
+            services.AddScoped<IModelRepository, ModelRepository>();
 
             return services;
         }
